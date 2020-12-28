@@ -16,3 +16,4 @@ LCMT/Images/*.png
 */bin
 ICL/Debug
 ICL/Release
+*/Ipch

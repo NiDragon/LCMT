@@ -4,16 +4,16 @@ FileSaveError=Failed to save file {0}
 DatabaseConnectFailed=Cannot connect to Database!\n\nMessage: {0}
 
 # File
-FileMenuItem=ファイル
-FileMenuItem_Open=オープン
-FileMenuItem_Save=セーブ
-FileMenuItem_SaveAs=新規保管
-FileMenuItem_ClientPath=クライアントパス
-FileMenuItem_Exit=出口
+FileMenuItem=File
+FileMenuItem_Open=Open
+FileMenuItem_Save=Save
+FileMenuItem_SaveAs=Save As
+FileMenuItem_ClientPath=Change Client Path
+FileMenuItem_Exit=Exit
 
 # Database
-DataMenuItem=データベース
-DataMenuItem_Init=コネクト
+DataMenuItem=Database
+DataMenuItem_Init=Connect
 DataMenuItem_Con=Connecting
 DataMenuItem_Re=Reconnect
 DataMenuItem_On=Disconnect
