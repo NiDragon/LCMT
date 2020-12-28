@@ -50,7 +50,7 @@ static int CALLBACK BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPAR
 	return 0;
 }
 
-int BrowseFolder(wchar_t* result_path, wchar_t* saved_path)
+int BrowseFolder(wchar_t* title, wchar_t* result_path, wchar_t* saved_path)
 {
 	int result = 0;
 
@@ -68,8 +68,8 @@ int BrowseFolder(wchar_t* result_path, wchar_t* saved_path)
 	if (SUCCEEDED(hr))
 	{
 		pOpenFolderDialog->SetOptions(FOS_PICKFOLDERS);
-		pOpenFolderDialog->SetTitle(L"Select Client Directory...");
-		pOpenFolderDialog->SetOkButtonLabel(L"Select");
+		pOpenFolderDialog->SetTitle(title);
+		pOpenFolderDialog->SetOkButtonLabel(L"Select Folder");
 
 		// Show the dialog
 		hr = pOpenFolderDialog->Show(NULL);

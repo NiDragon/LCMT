@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <string>
 
-extern "C" ICL_API int BrowseFolder(wchar_t* result_path, wchar_t* saved_path);
+extern "C" ICL_API int BrowseFolder(wchar_t* title, wchar_t* result_path, wchar_t* saved_path);
 
 extern "C" ICL_API bool Decrypt_Password(char* crypt, uint32_t AuthKey);
 

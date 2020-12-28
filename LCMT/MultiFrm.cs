@@ -34,14 +34,14 @@ namespace LCMT
     public partial class MultiFrm : MetroFramework.Forms.MetroForm
     {
         private const int MAX_PATH = 260;
-        private static TimeSpan DBConnectTimeout = TimeSpan.FromSeconds(60);
+        private static TimeSpan DBConnectTimeout = TimeSpan.FromSeconds(10);
 
         private String[] TableIds = { "DataDB", "AuthDB", "CharDB", "PostDB" };
         private bool[] m_signal = new bool[4];
         private int s_count = 0;
 
         [DllImport("ICL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        public static extern int BrowseFolder([MarshalAsAttribute(UnmanagedType.LPWStr)] StringBuilder ResultPath, [MarshalAsAttribute(UnmanagedType.LPWStr)] String InitPath);
+        public static extern int BrowseFolder([MarshalAsAttribute(UnmanagedType.LPWStr)] String Title, [MarshalAsAttribute(UnmanagedType.LPWStr)] StringBuilder ResultPath, [MarshalAsAttribute(UnmanagedType.LPWStr)] String InitPath);
 
         #region DB_CONNECTIONS
         private IllSQL m_db = new IllSQL();
@@ -211,13 +211,10 @@ namespace LCMT
             if (!Directory.Exists(RootDir))
             {
                 MessageBox.Show("Please Set The Path To Client Root Directory!", "Configure");
-                //FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-                //fbd.ShowDialog();
 
                 StringBuilder nPath = new StringBuilder(MAX_PATH);
 
-                int ret = BrowseFolder(nPath, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+                int ret = BrowseFolder("Select Client Folder", nPath, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
                 String path = nPath.ToString();//fbd.SelectedPath;
 
@@ -299,18 +296,9 @@ namespace LCMT
 
         private void OnChangeClientPath(object sender, EventArgs e)
         {
-            /*
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            if (fbd.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            String path = fbd.SelectedPath;
-            */
-
             StringBuilder nPath = new StringBuilder(MAX_PATH);
 
-            int ret = BrowseFolder(nPath, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            int ret = BrowseFolder("Select Client Folder", nPath, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
             if (ret != 0)
                 return;
