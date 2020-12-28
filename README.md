@@ -1,12 +1,14 @@
 # LCMT
-Multi Tool - (Work In Progress)
+A suite of my personal code and tools for working with the database and files.
 
-Two things before this program will run properly.
+# Compiling
+Things to do before this program will compile properly.
 
-1. Restore Nuget Packages (Required To Compile)
+1. Restore Nuget Packages
 2. Fill the LCMT/Images with Image Icon files .png check LCMT/Images/ReadMe.txt for info.
+3. Build
 
-# TODO
+# Future Goals
 These are overall tasks that need to be finished.
 
 1. Finish UI Translation.
