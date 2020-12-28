@@ -9,29 +9,13 @@ using IllTechLibrary.Util;
 
 namespace IllTechLibrary.SharedStructs
 {
-    public class LuckyDrawBox
+    public class LuckyDrawBox : SSClass
     {
         public LuckyDrawBox()
         {
         }
 
-        public LuckyDrawBox(List<Object> MembData)
-        {
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", e.Message, "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public LuckyDrawBox(List<Object> MembData) : base(MembData) { }
 
         public int a_index;
         public string a_name;
@@ -39,29 +23,13 @@ namespace IllTechLibrary.SharedStructs
         public int a_random;
     }
 
-    public class LuckyDrawBoxNeed
+    public class LuckyDrawBoxNeed : SSClass
     {
         public LuckyDrawBoxNeed()
         {
         }
 
-        public LuckyDrawBoxNeed(List<Object> MembData)
-        {
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", e.Message, "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public LuckyDrawBoxNeed(List<Object> MembData) : base(MembData) { }
 
         public int a_index;
         public int a_luckydraw_idx;
@@ -69,29 +37,13 @@ namespace IllTechLibrary.SharedStructs
         public ulong a_count;
     }
 
-    public class LuckyDrawResult
+    public class LuckyDrawResult : SSClass
     {
         public LuckyDrawResult()
         {
         }
 
-        public LuckyDrawResult(List<Object> MembData)
-        {
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", e.Message, "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public LuckyDrawResult(List<Object> MembData) : base(MembData) { }
 
         public int a_index;
         public int a_luckydraw_idx;

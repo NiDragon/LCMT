@@ -8,33 +8,13 @@ using System.Threading.Tasks;
 
 namespace IllTechLibrary.SharedStructs
 {
-    public class ShopInfo
+    public class ShopInfo : SSClass
     {   
         public ShopInfo()
         {
         }
 
-        public ShopInfo(List<Object> MembData)
-        {
-            int lastIndex = 0;
-
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    lastIndex = i;
-
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", String.Format("{0}\nEntry Name: {1}", e.Message, info[lastIndex].Name), "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public ShopInfo(List<Object> MembData) : base(MembData) { }
 
         public int a_keeper_idx;
         public int a_zone_num;
@@ -48,29 +28,13 @@ namespace IllTechLibrary.SharedStructs
         public int a_y_layer;
     }
 
-    public class ShopItem
+    public class ShopItem : SSClass
     {
         public ShopItem()
         {
         }
 
-        public ShopItem(List<Object> MembData)
-        {
-            FieldInfo[] info = this.GetType().GetFields();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", e.Message, "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public ShopItem(List<Object> MembData) : base(MembData) { }
 
         private List<String> nameList = new List<String>();
 

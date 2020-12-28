@@ -11,44 +11,13 @@ using IllTechLibrary.Util;
 
 namespace IllTechLibrary.SharedStructs
 {
-    public class Option
+    public class Option : SSClass
     {
         public Option()
         {
         }
 
-        public Option(List<Object> MembData)
-        {
-            int lastIndex = 0;
-
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    lastIndex = i;
-
-                    if (Attribute.IsDefined(info[i], typeof(LocaleAttribute)))
-                    {
-                        if (((LocaleAttribute)Attribute.GetCustomAttribute(info[i],
-                        typeof(LocaleAttribute))) != Core.LangCode)
-                        {
-                            info.RemoveAt(i);
-                            i--;
-                            continue;
-                        }
-                    }
-
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", e.Message, "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public Option(List<Object> MembData) : base(MembData) { }
 
         public int a_index;
         public int a_type;
@@ -69,54 +38,13 @@ namespace IllTechLibrary.SharedStructs
         public String a_name_jpn;
     }
 
-    public class RareOption
+    public class RareOption : SSClass
     {
         public RareOption()
         {
         }
 
-        public RareOption(List<Object> MembData)
-        {
-            int lastIndex = 0;
-
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    lastIndex = i;
-
-                    if (Attribute.IsDefined(info[i], typeof(LocaleAttribute)))
-                    {
-                        if (((LocaleAttribute)Attribute.GetCustomAttribute(info[i],
-                        typeof(LocaleAttribute))) != Core.LangCode)
-                        {
-                            info.RemoveAt(i);
-                            i--;
-                            continue;
-                        }
-                    }
-
-                    /*if (info[i].Name.Contains("a_name_") || info[i].Name.Contains("a_descr_"))
-                    {
-                        if (!info[i].Name.Contains(Core.LangCode))
-                        {
-                            info.RemoveAt(i);
-                            i--;
-                            continue;
-                        }
-                    }*/
-
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", String.Format("{0}\nEntry Name: {1}", e.Message, info[lastIndex].Name), "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public RareOption(List<Object> MembData) : base(MembData) { }
 
         private List<String> nameList = new List<String>();
 

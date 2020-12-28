@@ -8,33 +8,13 @@ using System.Threading.Tasks;
 
 namespace IllTechLibrary.SharedStructs
 {
-    public class ItemJewelData
+    public class ItemJewelData : SSClass
     {
         public ItemJewelData()
         {
         }
 
-        public ItemJewelData(List<Object> MembData)
-        {
-            int lastIndex = 0;
-
-            List<FieldInfo> info = this.GetType().GetFields().ToList();
-
-            try
-            {
-                for (int i = 0; i < info.Count(); i++)
-                {
-                    lastIndex = i;
-
-                    info[i].SetValue(this, MembData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                String message = e.Message;
-                MsgDialogs.Show("Exception!", String.Format("{0}\nEntry Name: {1}", e.Message, info[lastIndex].Name), "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
-            }
-        }
+        public ItemJewelData(List<Object> MembData) : base(MembData) { }
 
         public int a_index;
         public Int64 a_normal_compose_neednas;

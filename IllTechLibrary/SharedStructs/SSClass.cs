@@ -78,7 +78,7 @@ namespace IllTechLibrary.SharedStructs
             catch (Exception e)
             {
                 String message = e.Message;
-                MsgDialogs.Show("Exception!", String.Format("{0}\nEntry Name: {1}", e.Message, info[lastIndex].Name), "ok", IllTechLibrary.Util.MsgDialogs.MsgTypes.ERROR);
+                MsgDialogs.Show("Exception!", String.Format("{0}\nEntry Name: {1}", e.Message, info[lastIndex].Name), "ok", MsgDialogs.MsgTypes.ERROR);
             }
         }
     }

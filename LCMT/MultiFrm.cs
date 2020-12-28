@@ -424,7 +424,7 @@ namespace LCMT
                             m_db.Disconnect();
                             m_post.Disconnect();
 
-                            DataMenuItem_Init.Text = StringTable.UIStrings["DataMenuItem_Off"];
+                            DataMenuItem_Init.Text = StringTable.UIStrings["DataMenuItem_Init"];
                             DataMenuItem_Init.Click += OnConnect;
 
                             MsgDialogs.Show("Database Error!", "Could not connect to DB! Check config and try again.", "ok", MsgDialogs.MsgTypes.ERROR);
@@ -475,7 +475,7 @@ namespace LCMT
             m_post.Disconnect();
 
             DataMenuItem_Init.Click -= OnDisconnect;
-            DataMenuItem_Init.Text = StringTable.UIStrings["DataMenuItem_Off"];
+            DataMenuItem_Init.Text = StringTable.UIStrings["DataMenuItem_Init"];
             DataMenuItem_Init.Click += OnConnect;
 
             for(int i = 0; i < MdiChildren.Count(); i++)
