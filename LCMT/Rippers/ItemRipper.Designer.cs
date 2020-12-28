@@ -35,11 +35,11 @@
             this.OpenFileEp2 = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFileEp3 = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFileEp4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.playParkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConfirmOkBtn = new System.Windows.Forms.Button();
-            this.playParkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lCGN02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +90,6 @@
             // 
             // OpenFileEp3
             // 
-            this.OpenFileEp3.Enabled = false;
             this.OpenFileEp3.Name = "OpenFileEp3";
             this.OpenFileEp3.Size = new System.Drawing.Size(180, 22);
             this.OpenFileEp3.Text = "Open EP3";
@@ -99,13 +98,20 @@
             // OpenFileEp4
             // 
             this.OpenFileEp4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playParkToolStripMenuItem,
-            this.lCGN02ToolStripMenuItem});
+            this.normalToolStripMenuItem,
+            this.playParkToolStripMenuItem});
             this.OpenFileEp4.Name = "OpenFileEp4";
             this.OpenFileEp4.Size = new System.Drawing.Size(180, 22);
             this.OpenFileEp4.Tag = "none";
             this.OpenFileEp4.Text = "Open EP4";
-            this.OpenFileEp4.Click += new System.EventHandler(this.OpenFileEp4_Click);
+            // 
+            // playParkToolStripMenuItem
+            // 
+            this.playParkToolStripMenuItem.Name = "playParkToolStripMenuItem";
+            this.playParkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.playParkToolStripMenuItem.Tag = "playpark";
+            this.playParkToolStripMenuItem.Text = "Play Park";
+            this.playParkToolStripMenuItem.Click += new System.EventHandler(this.OpenFileEp4_Click);
             // 
             // toolStripSeparator1
             // 
@@ -117,7 +123,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExit);
             // 
             // ConfirmOkBtn
             // 
@@ -129,21 +135,12 @@
             this.ConfirmOkBtn.UseVisualStyleBackColor = true;
             this.ConfirmOkBtn.Click += new System.EventHandler(this.ConfirmOkBtn_Click);
             // 
-            // playParkToolStripMenuItem
+            // normalToolStripMenuItem
             // 
-            this.playParkToolStripMenuItem.Name = "playParkToolStripMenuItem";
-            this.playParkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.playParkToolStripMenuItem.Tag = "playpark";
-            this.playParkToolStripMenuItem.Text = "Play Park";
-            this.playParkToolStripMenuItem.Click += new System.EventHandler(this.OpenFileEp4_Click);
-            // 
-            // lCGN02ToolStripMenuItem
-            // 
-            this.lCGN02ToolStripMenuItem.Name = "lCGN02ToolStripMenuItem";
-            this.lCGN02ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lCGN02ToolStripMenuItem.Tag = "lcgn02";
-            this.lCGN02ToolStripMenuItem.Text = "LCGN02";
-            this.lCGN02ToolStripMenuItem.Click += new System.EventHandler(this.OpenFileEp4_Click);
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalToolStripMenuItem.Text = "Normal";
+            this.normalToolStripMenuItem.Click += new System.EventHandler(this.OpenFileEp4_Click);
             // 
             // ItemRipper
             // 
@@ -178,6 +175,6 @@
         private System.Windows.Forms.Button ConfirmOkBtn;
         private System.Windows.Forms.ToolStripMenuItem OpenFileEp1;
         private System.Windows.Forms.ToolStripMenuItem playParkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lCGN02ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
     }
 }

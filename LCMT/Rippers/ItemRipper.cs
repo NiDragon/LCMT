@@ -35,7 +35,7 @@ namespace LCMT
             InitializeComponent();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OnExit(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
@@ -342,7 +342,7 @@ namespace LCMT
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Invalid Episode Two ItemAll", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Episode Three ItemAll", "Error", MessageBoxButtons.OK);
                 }
             }
         }
@@ -466,7 +466,7 @@ namespace LCMT
                                 tempitem.a_damage_effect_name = Encoding.ASCII.GetString(b.ReadBytes(32));
                                 tempitem.a_damage_effect_name = tempitem.a_damage_effect_name.Replace("\0", "");
 
-                                if (ripType == "playpark" || ripType == "lcgn02")
+                                if (ripType == "playpark")
                                 {
                                     b.ReadInt32();
                                 }
@@ -503,14 +503,6 @@ namespace LCMT
                                 b.ReadInt32();
 
                                 tempitem.a_castle_war = b.ReadByte();
-
-                                if (ripType == "lcgn02")
-                                {
-                                    for (int i = 0; i < 11; i++)
-                                    {
-                                        b.ReadInt32();
-                                    }
-                                }
 
                                 readItems.Add(tempitem);
                             }
