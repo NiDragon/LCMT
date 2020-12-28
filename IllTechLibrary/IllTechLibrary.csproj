@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A772565-DE04-4915-AA03-FD9AFB8AE226}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IllTechLibrary</RootNamespace>
+    <AssemblyName>IllTechLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <NoWarn>0169;0649;1998</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>0169;0649;1998</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Authentication|AnyCPU'">
+    <OutputPath>bin\Authentication\</OutputPath>
+    <DefineConstants>TRACE;AUTH_SERVICE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <NoWarn>0169;0649;1998</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Authentication_Debug|AnyCPU'">
+    <OutputPath>bin\Authentication_Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;AUTH_SERVICE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <NoWarn>0169;0649;1998</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AliasAttribute.cs" />
+    <Compile Include="Attributes\MinVersion.cs" />
+    <Compile Include="Attributes\AttributeMethods.cs" />
+    <Compile Include="Controls\CharEquipScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CharEquipScreen.Designer.cs">
+      <DependentUpon>CharEquipScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CharInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CharInventory.Designer.cs">
+      <DependentUpon>CharInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CMdiContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CMdiContainer.Designer.cs">
+      <DependentUpon>CMdiContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomDrawListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomDrawListBox.Designer.cs">
+      <DependentUpon>CustomDrawListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StashInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StashInventory.Designer.cs">
+      <DependentUpon>StashInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Ini\Exceptions\ParsingException.cs" />
+    <Compile Include="Core\Ini\FileIniParser.cs" />
+    <Compile Include="Core\Ini\Helpers\Assert.cs" />
+    <Compile Include="Core\Ini\Model\Configuration\ConcatenateDuplicatedKeysIniParserConfiguration.cs" />
+    <Compile Include="Core\Ini\Model\Configuration\IniParserConfiguration.cs" />
+    <Compile Include="Core\Ini\Model\Formatting\DefaultIniDataFormatter.cs" />
+    <Compile Include="Core\Ini\Model\Formatting\IIniDataFormatter.cs" />
+    <Compile Include="Core\Ini\Model\IniData.cs" />
+    <Compile Include="Core\Ini\Model\IniDataCaseInsensitive.cs" />
+    <Compile Include="Core\Ini\Model\KeyData.cs" />
+    <Compile Include="Core\Ini\Model\KeyDataCollection.cs" />
+    <Compile Include="Core\Ini\Model\SectionData.cs" />
+    <Compile Include="Core\Ini\Model\SectionDataCollection.cs" />
+    <Compile Include="Core\Ini\Parser\ConcatenateDuplicatedKeysIniDataParser.cs" />
+    <Compile Include="Core\Ini\Parser\IniDataParser.cs" />
+    <Compile Include="Core\Ini\StreamIniDataParser.cs" />
+    <Compile Include="Core\Ini\StringIniParser.cs" />
+    <Compile Include="Core\Interrupt.cs" />
+    <Compile Include="Core\Lexer.cs" />
+    <Compile Include="Core\LibSquishNet\ClusterFit.cs" />
+    <Compile Include="Core\LibSquishNet\ColourBlock.cs" />
+    <Compile Include="Core\LibSquishNet\ColourFit.cs" />
+    <Compile Include="Core\LibSquishNet\ColourSet.cs" />
+    <Compile Include="Core\LibSquishNet\Helpers.cs" />
+    <Compile Include="Core\LibSquishNet\Maths.cs" />
+    <Compile Include="Core\LibSquishNet\RangeFit.cs" />
+    <Compile Include="Core\LibSquishNet\SingleColourFit.cs" />
+    <Compile Include="Core\LibSquishNet\SingleColourLookup.cs" />
+    <Compile Include="Core\LibSquishNet\Squish.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Core\Runtime\CMemoryExecute.cs" />
+    <Compile Include="Crypto\CryptoServices.cs" />
+    <Compile Include="DataFiles\ItemCache.cs" />
+    <Compile Include="Dialogs\LogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\LogView.Designer.cs">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\QuestionBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\QuestionBox.Designer.cs">
+      <DependentUpon>QuestionBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\TaskStateEnums.cs" />
+    <Compile Include="Flags\SkillUseFlagBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\SkillUseFlagBuilder.Designer.cs">
+      <DependentUpon>SkillUseFlagBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flags\SkillFlagBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\SkillFlagBuilder.Designer.cs">
+      <DependentUpon>SkillFlagBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flags\JobBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\JobBuilder.Designer.cs">
+      <DependentUpon>JobBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flags\NpcFlagBuilder2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\NpcFlagBuilder2.Designer.cs">
+      <DependentUpon>NpcFlagBuilder2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flags\ItemFlagBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\ItemFlagBuilder.Designer.cs">
+      <DependentUpon>ItemFlagBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flags\NpcFlagBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flags\NpcFlagBuilder.Designer.cs">
+      <DependentUpon>NpcFlagBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LastChaos\SmcFile.cs" />
+    <Compile Include="Localization\StringTable.cs" />
+    <Compile Include="MySQL\IllSQL.cs" />
+    <Compile Include="MySQL\Transactions.cs" />
+    <Compile Include="LastChaos\SmcReadOnly.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Deserialize.cs" />
+    <Compile Include="Settings\MySQLSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\MySQLSettings.Designer.cs">
+      <DependentUpon>MySQLSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Preferences.cs" />
+    <Compile Include="SharedStructs\ACharacter.cs" />
+    <Compile Include="SharedStructs\AUser.cs" />
+    <Compile Include="SharedStructs\BanUserData.cs" />
+    <Compile Include="SharedStructs\CashMallData.cs" />
+    <Compile Include="SharedStructs\CharConstants.cs" />
+    <Compile Include="SharedStructs\DropItem.cs" />
+    <Compile Include="SharedStructs\FriendData.cs" />
+    <Compile Include="SharedStructs\GuildData.cs" />
+    <Compile Include="SharedStructs\GuildMemberData.cs" />
+    <Compile Include="SharedStructs\GuildMemberExtendData.cs" />
+    <Compile Include="SharedStructs\GuildStashData.cs" />
+    <Compile Include="SharedStructs\IgnoreData.cs" />
+    <Compile Include="SharedStructs\InventoryData.cs" />
+    <Compile Include="SharedStructs\ItemData.cs" />
+    <Compile Include="SharedStructs\ItemJewelData.cs" />
+    <Compile Include="Attributes\LocaleAttribute.cs" />
+    <Compile Include="SharedStructs\LuckyDraw.cs" />
+    <Compile Include="SharedStructs\MagicData.cs" />
+    <Compile Include="SharedStructs\MagicLevel.cs" />
+    <Compile Include="SharedStructs\NpcData.cs" />
+    <Compile Include="SharedStructs\NpcDropAll.cs" />
+    <Compile Include="SharedStructs\Options.cs" />
+    <Compile Include="SharedStructs\PetData.cs" />
+    <Compile Include="SharedStructs\QuestData.cs" />
+    <Compile Include="SharedStructs\ShopInfo.cs" />
+    <Compile Include="SharedStructs\SkillData.cs" />
+    <Compile Include="SharedStructs\SkillLevel.cs" />
+    <Compile Include="SharedStructs\SSClass.cs" />
+    <Compile Include="SharedStructs\SSkillData.cs" />
+    <Compile Include="SharedStructs\StashData.cs" />
+    <Compile Include="SharedStructs\Strings\ClientStrings.cs" />
+    <Compile Include="SharedStructs\Title.cs" />
+    <Compile Include="SharedStructs\WearInvenData.cs" />
+    <Compile Include="Dialogs\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Algorithm\AlphanumComparatorFast.cs" />
+    <Compile Include="Util\BitHelpers.cs" />
+    <Compile Include="Dialogs\EffectPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\EffectPicker.Designer.cs">
+      <DependentUpon>EffectPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AnimationPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AnimationPicker.Designer.cs">
+      <DependentUpon>AnimationPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\CException.cs" />
+    <Compile Include="Util\ControlUtil.cs" />
+    <Compile Include="DataFiles\IconCache.cs" />
+    <Compile Include="Util\ConversionClass.cs" />
+    <Compile Include="Util\FileSelectDialog.cs" />
+    <Compile Include="Util\FormDataSync.cs" />
+    <Compile Include="Util\FSUtil.cs" />
+    <Compile Include="Dialogs\FortuneDataEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FortuneDataEntry.Designer.cs">
+      <DependentUpon>FortuneDataEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\IconPickerDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\IconPickerDlg.Designer.cs">
+      <DependentUpon>IconPickerDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ItemSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ItemSelector.Designer.cs">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\MsgDialogs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CMdiContainer.resx">
+      <DependentUpon>CMdiContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\LogView.resx">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\QuestionBox.resx">
+      <DependentUpon>QuestionBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\ItemFlagBuilder.resx">
+      <DependentUpon>ItemFlagBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\SkillUseFlagBuilder.resx">
+      <DependentUpon>SkillUseFlagBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\SkillFlagBuilder.resx">
+      <DependentUpon>SkillFlagBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\JobBuilder.resx">
+      <DependentUpon>JobBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\NpcFlagBuilder2.resx">
+      <DependentUpon>NpcFlagBuilder2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flags\NpcFlagBuilder.resx">
+      <DependentUpon>NpcFlagBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\MySQLSettings.resx">
+      <DependentUpon>MySQLSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\EffectPicker.resx">
+      <DependentUpon>EffectPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AnimationPicker.resx">
+      <DependentUpon>AnimationPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FortuneDataEntry.resx">
+      <DependentUpon>FortuneDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\IconPickerDlg.resx">
+      <DependentUpon>IconPickerDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ItemSelector.resx">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Ini\Model\IniData.cs.rej" />
+    <None Include="Core\Ini\Properties\publickey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invtab_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invtab_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inventroy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StashBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StashBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invtab_ex_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invtab_ex_on.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

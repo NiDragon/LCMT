@@ -1,0 +1,30 @@
+# General Strings
+ErrorDialogTitle=Error!
+FileSaveError=Failed to save file {0}
+DatabaseConnectFailed=Cannot connect to Database!\n\nMessage: {0}
+
+# File
+FileMenuItem=ファイル
+FileMenuItem_Open=オープン
+FileMenuItem_Save=セーブ
+FileMenuItem_SaveAs=新規保管
+FileMenuItem_ClientPath=クライアントパス
+FileMenuItem_Exit=出口
+
+# Database
+DataMenuItem=データベース
+DataMenuItem_Init=コネクト
+DataMenuItem_Con=Connecting
+DataMenuItem_Re=Reconnect
+DataMenuItem_On=Disconnect
+DataMenuItem_Tables=Set Tables
+DataMenuItem_Settings=Settings
+
+# Tools
+ToolMenuItem=Tools
+ToolMenuItem_ReloadStr=Reload Strings
+
+# Help
+HelpMenuItem=Help
+HelpMenuItem_Log=Show Log
+HelpMenuItem_About=About

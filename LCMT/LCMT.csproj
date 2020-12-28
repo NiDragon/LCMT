@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C5DFDFE-69EE-43D4-83E2-F12FAD0FEB3A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LCMT</RootNamespace>
+    <AssemblyName>LCMT</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0414;0108;0169</NoWarn>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0414;0108;0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LC.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Authentication|AnyCPU'">
+    <OutputPath>bin\Authentication\</OutputPath>
+    <DefineConstants>TRACE;AUTH_SERVICE</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <Optimize>true</Optimize>
+    <NoWarn>0414;0108;0169</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Authentication_Debug|AnyCPU'">
+    <OutputPath>bin\Authentication_Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;AUTH_SERVICE</DefineConstants>
+    <Prefer32Bit>true</Prefer32Bit>
+    <NoWarn>0414;0108;0169</NoWarn>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\SharedData.cs" />
+    <Compile Include="Dialogs\GiftMaker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GiftMaker.Designer.cs">
+      <DependentUpon>GiftMaker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\LCToolFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\DatabaseChanger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\DatabaseChanger.Designer.cs">
+      <DependentUpon>DatabaseChanger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemTool\ItemFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemTool\ItemFrm.Designer.cs">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LuckyTool\LuckyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LuckyTool\LuckyFrm.Designer.cs">
+      <DependentUpon>LuckyFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MagicTool\MagicTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MagicTool\MagicTool.Designer.cs">
+      <DependentUpon>MagicTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultiFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiFrm.Designer.cs">
+      <DependentUpon>MultiFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs" />
+    <Compile Include="NpcTool\NpcFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NpcTool\NpcFrm.Designer.cs">
+      <DependentUpon>NpcFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTool\PlayerTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerTool\PlayerTool.Designer.cs">
+      <DependentUpon>PlayerTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rippers\ItemRipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rippers\ItemRipper.Designer.cs">
+      <DependentUpon>ItemRipper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillTool\SkillFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkillTool\SkillFrm.Designer.cs">
+      <DependentUpon>SkillFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StringTool\StringFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StringTool\StringFrm.Designer.cs">
+      <DependentUpon>StringFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TitleTool\TitleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TitleTool\TitleFrm.designer.cs">
+      <DependentUpon>TitleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Version\ToolVersions.cs" />
+    <Compile Include="ZoneData\ZoneFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZoneData\ZoneFrm.Designer.cs">
+      <DependentUpon>ZoneFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneData\StringSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZoneData\StringSelect.Designer.cs">
+      <DependentUpon>StringSelect.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Dialogs\GiftMaker.resx">
+      <DependentUpon>GiftMaker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\DatabaseChanger.resx">
+      <DependentUpon>DatabaseChanger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemTool\ItemFrm.resx">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LuckyTool\LuckyFrm.resx">
+      <DependentUpon>LuckyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MagicTool\MagicTool.resx">
+      <DependentUpon>MagicTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiFrm.resx">
+      <DependentUpon>MultiFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NpcTool\NpcFrm.resx">
+      <DependentUpon>NpcFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerTool\PlayerTool.resx">
+      <DependentUpon>PlayerTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Rippers\ItemRipper.resx">
+      <DependentUpon>ItemRipper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillTool\SkillFrm.resx">
+      <DependentUpon>SkillFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringTool\StringFrm.resx">
+      <DependentUpon>StringFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TitleTool\TitleFrm.resx">
+      <DependentUpon>TitleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoneData\ZoneFrm.resx">
+      <DependentUpon>ZoneFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoneData\StringSelect.resx">
+      <DependentUpon>StringSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IllTechLibrary\IllTechLibrary.csproj">
+      <Project>{6a772565-de04-4915-aa03-fd9afb8ae226}</Project>
+      <Name>IllTechLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NpcTool\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ItemTool\it.png" />
+    <Content Include="Images\ActionBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ComboBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ComboBtn1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ComboBtn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\EventBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ItemBtn9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\QuestBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RemissionBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SkillBtn0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SkillBtn1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SkillBtn2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ItemTool\it.ico" />
+    <Content Include="LC.ico" />
+    <None Include="LuckyTool\lucky_temp.png" />
+    <None Include="MagicTool\mt.png" />
+    <Content Include="Locale\en.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NpcTool\app.ico" />
+    <Content Include="NpcTool\npc_temp.png" />
+    <None Include="Resources\healer_equip.png" />
+    <None Include="Resources\Inventroy.png" />
+    <None Include="Resources\knight_equip.png" />
+    <None Include="Resources\mage_equip.png" />
+    <None Include="Resources\nightshadow_equip.png" />
+    <None Include="Resources\rouge_equip.png" />
+    <None Include="Resources\sorc_equip.png" />
+    <None Include="Resources\titan_equip.png" />
+    <None Include="Resources\Inventory_Back.png" />
+    <None Include="PlayerTool\pt.png" />
+    <None Include="Resources\invtab_off.png" />
+    <None Include="Resources\invtab_on.png" />
+    <Content Include="SkillTool\skillicon.ico" />
+    <Content Include="SkillTool\SkillIcon.png" />
+    <Content Include="StringTool\st.ico" />
+    <None Include="Resources\micross.ttf" />
+    <None Include="ZoneData\zd.png" />
+    <None Include="StringTool\st.png" />
+    <Content Include="TitleTool\TitleIcon.ico" />
+    <Content Include="TitleTool\TitleIcon.png" />
+    <Content Include="ZoneData\zd.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
