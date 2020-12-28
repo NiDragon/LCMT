@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Windows.Forms;
+using IllTechLibrary.Settings;
 using IllTechLibrary.Util;
 
 namespace LCMT
@@ -69,22 +70,51 @@ namespace LCMT
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             }
 
+            ProcessCommandLine();
+
             // Form Visual Styles
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-#if AUTH_SERVICE
-            AuthForm auth = new AuthForm();
-
-            auth.ShowDialog();
-            
-            if (auth.GetModule() != null)
-                Application.Run((Form)auth.GetModule());
-#else
             MultiFrm main = new MultiFrm();
 
             Application.Run(main);
-#endif
+        }
+
+        static void ProcessCommandLine()
+        {
+            string[] cmdline = Environment.GetCommandLineArgs();
+
+            for(int i = 1; i < cmdline.Length; i++)
+            {
+                try
+                {
+                    string[] arg;
+
+                    if (cmdline[i].Contains("="))
+                    {
+                        arg = cmdline[i].Split('=');
+                    }
+                    else
+                    {
+                        arg = new string[] { cmdline[i], "" };
+                    }
+
+                    switch(arg[0])
+                    {
+                        case "-allow-unsafe":
+                            Preferences.g_allowUnsafe = bool.Parse(arg[1]);
+                            break;
+                        default:
+                            MsgDialogs.LogError($"Unknown Command Line {cmdline[i]}");
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    // Malformed commandline move on
+                }
+            }
         }
     }
 }

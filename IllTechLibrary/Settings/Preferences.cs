@@ -18,6 +18,12 @@ namespace IllTechLibrary.Settings
 
         private static IniData m_config = null;
 
+#if DEBUG
+        public static bool g_allowUnsafe = true;
+#else
+        public static bool g_allowUnsafe = false;
+#endif
+
         public static IniData GetData()
         {
             FileIniDataParser i = new FileIniDataParser();

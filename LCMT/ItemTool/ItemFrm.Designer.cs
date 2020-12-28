@@ -70,6 +70,9 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.damageEffectBtn = new MetroFramework.Controls.MetroButton();
+            this.attackEffectBtn = new MetroFramework.Controls.MetroButton();
+            this.effectNameBtn = new MetroFramework.Controls.MetroButton();
             this.label83 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
@@ -85,6 +88,8 @@
             this.slideZoom = new MetroFramework.Controls.MetroTrackBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbJob_Flag = new System.Windows.Forms.TextBox();
+            this.BuildJobFlag = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.tbFlag = new System.Windows.Forms.TextBox();
@@ -105,10 +110,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tbLevel2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.pbIcon = new System.Windows.Forms.PictureBox();
             this.tbdescr_usa = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cb_enabled = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.button2 = new MetroFramework.Controls.MetroButton();
             this.label19 = new System.Windows.Forms.Label();
             this.tbFile_Smc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -251,8 +258,6 @@
             this.ExportItemFortuneMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExportSmcMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportItemSmcCheckedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.FixItemNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DatabaseContextMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,13 +271,7 @@
             this.UpdateOneMetroBtn = new MetroFramework.Controls.MetroButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.GeneralStatsLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.damageEffectBtn = new MetroFramework.Controls.MetroButton();
-            this.attackEffectBtn = new MetroFramework.Controls.MetroButton();
-            this.effectNameBtn = new MetroFramework.Controls.MetroButton();
-            this.BuildJobFlag = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.pbIcon = new System.Windows.Forms.PictureBox();
-            this.button2 = new MetroFramework.Controls.MetroButton();
+            this.fixItemNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -281,6 +280,7 @@
             this.groupBox11.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -290,7 +290,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.fortuneGrid)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // CopyNewBtn
@@ -705,6 +704,39 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Effect Data";
             // 
+            // damageEffectBtn
+            // 
+            this.damageEffectBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.damageEffectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.damageEffectBtn.Location = new System.Drawing.Point(207, 71);
+            this.damageEffectBtn.Name = "damageEffectBtn";
+            this.damageEffectBtn.Size = new System.Drawing.Size(23, 18);
+            this.damageEffectBtn.TabIndex = 76;
+            this.damageEffectBtn.UseSelectable = true;
+            this.damageEffectBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
+            // 
+            // attackEffectBtn
+            // 
+            this.attackEffectBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.attackEffectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attackEffectBtn.Location = new System.Drawing.Point(207, 45);
+            this.attackEffectBtn.Name = "attackEffectBtn";
+            this.attackEffectBtn.Size = new System.Drawing.Size(23, 18);
+            this.attackEffectBtn.TabIndex = 75;
+            this.attackEffectBtn.UseSelectable = true;
+            this.attackEffectBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
+            // 
+            // effectNameBtn
+            // 
+            this.effectNameBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.effectNameBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.effectNameBtn.Location = new System.Drawing.Point(207, 19);
+            this.effectNameBtn.Name = "effectNameBtn";
+            this.effectNameBtn.Size = new System.Drawing.Size(23, 18);
+            this.effectNameBtn.TabIndex = 74;
+            this.effectNameBtn.UseSelectable = true;
+            this.effectNameBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
+            // 
             // label83
             // 
             this.label83.AutoSize = true;
@@ -883,6 +915,28 @@
             this.tbJob_Flag.Name = "tbJob_Flag";
             this.tbJob_Flag.Size = new System.Drawing.Size(58, 19);
             this.tbJob_Flag.TabIndex = 75;
+            // 
+            // BuildJobFlag
+            // 
+            this.BuildJobFlag.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.BuildJobFlag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BuildJobFlag.Location = new System.Drawing.Point(136, 28);
+            this.BuildJobFlag.Name = "BuildJobFlag";
+            this.BuildJobFlag.Size = new System.Drawing.Size(23, 18);
+            this.BuildJobFlag.TabIndex = 74;
+            this.BuildJobFlag.UseSelectable = true;
+            this.BuildJobFlag.Click += new System.EventHandler(this.OnBuildJobFlag_Click);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.metroButton1.Location = new System.Drawing.Point(258, 28);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(23, 18);
+            this.metroButton1.TabIndex = 72;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.OnFlagBuilderClick);
             // 
             // label22
             // 
@@ -1117,6 +1171,18 @@
             this.label8.TabIndex = 69;
             this.label8.Text = "Icon";
             // 
+            // pbIcon
+            // 
+            this.pbIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbIcon.Location = new System.Drawing.Point(160, 16);
+            this.pbIcon.Name = "pbIcon";
+            this.pbIcon.Size = new System.Drawing.Size(34, 34);
+            this.pbIcon.TabIndex = 68;
+            this.pbIcon.TabStop = false;
+            this.pbIcon.Click += new System.EventHandler(this.OnIconClick);
+            // 
             // tbdescr_usa
             // 
             this.tbdescr_usa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1158,6 +1224,17 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Clear";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnClearName);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(586, 129);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(23, 18);
+            this.button2.TabIndex = 60;
+            this.button2.UseSelectable = true;
+            this.button2.Click += new System.EventHandler(this.OnSelectSmcClick);
             // 
             // label19
             // 
@@ -1277,10 +1354,10 @@
             this.tabPage3.HorizontalScrollbarBarColor = true;
             this.tabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.tabPage3.HorizontalScrollbarSize = 10;
-            this.tabPage3.Location = new System.Drawing.Point(4, 41);
+            this.tabPage3.Location = new System.Drawing.Point(4, 38);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(869, 665);
+            this.tabPage3.Size = new System.Drawing.Size(869, 668);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Extended";
             this.tabPage3.VerticalScrollbarBarColor = true;
@@ -2237,9 +2314,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 41);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(869, 665);
+            this.metroTabPage1.Size = new System.Drawing.Size(869, 668);
             this.metroTabPage1.TabIndex = 3;
             this.metroTabPage1.Text = "Fortune";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -2473,34 +2550,35 @@
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveMenuItem.Text = "Save";
             this.SaveMenuItem.Click += new System.EventHandler(this.OnSaveAs);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveAsMenuItem.Text = "Save As";
             this.SaveAsMenuItem.Click += new System.EventHandler(this.OnSaveAs);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RipItemsMenuItem});
+            this.RipItemsMenuItem,
+            this.fixItemNamesToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // RipItemsMenuItem
             // 
             this.RipItemsMenuItem.Name = "RipItemsMenuItem";
-            this.RipItemsMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.RipItemsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RipItemsMenuItem.Text = "Rip Items";
             this.RipItemsMenuItem.Click += new System.EventHandler(this.DoRipItemsMenu);
             // 
@@ -2510,12 +2588,10 @@
             this.ExportItemNamesMenuItem,
             this.ExportItemFortuneMenuItem,
             this.ExportSmcMenuItem,
-            this.exportItemSmcCheckedToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.FixItemNamesMenuItem});
+            this.exportItemSmcCheckedToolStripMenuItem});
             this.ExportMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ExportMenuItem.Name = "ExportMenuItem";
-            this.ExportMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.ExportMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExportMenuItem.Text = "Export";
             // 
             // ExportItemNamesMenuItem
@@ -2546,27 +2622,15 @@
             this.exportItemSmcCheckedToolStripMenuItem.Text = "Export Item Smc Checked";
             this.exportItemSmcCheckedToolStripMenuItem.Click += new System.EventHandler(this.OnExportSmcChecked);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(199, 6);
-            // 
-            // FixItemNamesMenuItem
-            // 
-            this.FixItemNamesMenuItem.Name = "FixItemNamesMenuItem";
-            this.FixItemNamesMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.FixItemNamesMenuItem.Text = "Fix Item Names";
-            this.FixItemNamesMenuItem.Click += new System.EventHandler(this.OnFixItemNames);
-            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(109, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.ExitMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.OnExitClick);
             // 
@@ -2589,7 +2653,7 @@
             this.oneToolStripMenuItem});
             this.UpdateMenuItem.Enabled = false;
             this.UpdateMenuItem.Name = "UpdateMenuItem";
-            this.UpdateMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.UpdateMenuItem.Size = new System.Drawing.Size(180, 22);
             this.UpdateMenuItem.Tag = "EnableOnConnected";
             this.UpdateMenuItem.Text = "Update";
             // 
@@ -2614,7 +2678,7 @@
             this.oneToolStripMenuItem1});
             this.InsertMenuItem.Enabled = false;
             this.InsertMenuItem.Name = "InsertMenuItem";
-            this.InsertMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.InsertMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InsertMenuItem.Tag = "EnableOnConnected";
             this.InsertMenuItem.Text = "Insert";
             this.InsertMenuItem.Visible = false;
@@ -2637,7 +2701,7 @@
             // 
             this.DeleteMenuItem.Enabled = false;
             this.DeleteMenuItem.Name = "DeleteMenuItem";
-            this.DeleteMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.DeleteMenuItem.Size = new System.Drawing.Size(180, 22);
             this.DeleteMenuItem.Tag = "EnableOnConnected";
             this.DeleteMenuItem.Text = "Delete";
             this.DeleteMenuItem.Click += new System.EventHandler(this.OnItemDelete);
@@ -2671,83 +2735,12 @@
             this.GeneralStatsLabel.Size = new System.Drawing.Size(38, 17);
             this.GeneralStatsLabel.Text = "Stats: ";
             // 
-            // damageEffectBtn
+            // fixItemNamesToolStripMenuItem
             // 
-            this.damageEffectBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.damageEffectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.damageEffectBtn.Location = new System.Drawing.Point(207, 71);
-            this.damageEffectBtn.Name = "damageEffectBtn";
-            this.damageEffectBtn.Size = new System.Drawing.Size(23, 18);
-            this.damageEffectBtn.TabIndex = 76;
-            this.damageEffectBtn.UseSelectable = true;
-            this.damageEffectBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
-            // 
-            // attackEffectBtn
-            // 
-            this.attackEffectBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.attackEffectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attackEffectBtn.Location = new System.Drawing.Point(207, 45);
-            this.attackEffectBtn.Name = "attackEffectBtn";
-            this.attackEffectBtn.Size = new System.Drawing.Size(23, 18);
-            this.attackEffectBtn.TabIndex = 75;
-            this.attackEffectBtn.UseSelectable = true;
-            this.attackEffectBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
-            // 
-            // effectNameBtn
-            // 
-            this.effectNameBtn.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.effectNameBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.effectNameBtn.Location = new System.Drawing.Point(207, 19);
-            this.effectNameBtn.Name = "effectNameBtn";
-            this.effectNameBtn.Size = new System.Drawing.Size(23, 18);
-            this.effectNameBtn.TabIndex = 74;
-            this.effectNameBtn.UseSelectable = true;
-            this.effectNameBtn.Click += new System.EventHandler(this.OnSelectEffectClick);
-            // 
-            // BuildJobFlag
-            // 
-            this.BuildJobFlag.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.BuildJobFlag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BuildJobFlag.Location = new System.Drawing.Point(136, 28);
-            this.BuildJobFlag.Name = "BuildJobFlag";
-            this.BuildJobFlag.Size = new System.Drawing.Size(23, 18);
-            this.BuildJobFlag.TabIndex = 74;
-            this.BuildJobFlag.UseSelectable = true;
-            this.BuildJobFlag.Click += new System.EventHandler(this.OnBuildJobFlag_Click);
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.metroButton1.Location = new System.Drawing.Point(258, 28);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(23, 18);
-            this.metroButton1.TabIndex = 72;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.OnFlagBuilderClick);
-            // 
-            // pbIcon
-            // 
-            this.pbIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbIcon.Location = new System.Drawing.Point(160, 16);
-            this.pbIcon.Name = "pbIcon";
-            this.pbIcon.Size = new System.Drawing.Size(34, 34);
-            this.pbIcon.TabIndex = 68;
-            this.pbIcon.TabStop = false;
-            this.pbIcon.Click += new System.EventHandler(this.OnIconClick);
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::LCMT.Properties.Resources.search_icon;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(586, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 18);
-            this.button2.TabIndex = 60;
-            this.button2.UseSelectable = true;
-            this.button2.Click += new System.EventHandler(this.OnSelectSmcClick);
+            this.fixItemNamesToolStripMenuItem.Name = "fixItemNamesToolStripMenuItem";
+            this.fixItemNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fixItemNamesToolStripMenuItem.Text = "Fix Item Names";
+            this.fixItemNamesToolStripMenuItem.Click += new System.EventHandler(this.OnFixItemNames);
             // 
             // ItemFrm
             // 
@@ -2787,6 +2780,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -2801,7 +2795,6 @@
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2870,8 +2863,6 @@
         private System.Windows.Forms.ToolStripMenuItem ExportItemNamesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExportItemFortuneMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExportSmcMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem FixItemNamesMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DatabaseContextMenu;
@@ -3047,5 +3038,6 @@
         private MetroFramework.Controls.MetroButton UpdateOneMetroBtn;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel GeneralStatsLabel;
+        private System.Windows.Forms.ToolStripMenuItem fixItemNamesToolStripMenuItem;
     }
 }

@@ -298,10 +298,20 @@ namespace LCMT.LuckyTool
 
         private void OnFixNames(object sender, EventArgs e)
         {
-            if ((m_box.Count == 0 || m_items.Count == 0) || true)
+            if (m_box.Count == 0 || m_items.Count == 0)
+                return;
+
+            if (!Preferences.g_allowUnsafe)
             {
                 MsgDialogs.ShowNoLog("Not Enabled!", "This Feature Is Not Enabled!", "OK", MsgDialogs.MsgTypes.INFO);
                 return;
+            }
+            else
+            {
+                if(MsgDialogs.ShowNoLog("Warning!", "This Cannot Be Undone Continue?", "YesNo", MsgDialogs.MsgTypes.WARNING) == DialogResult.No)
+                {
+                    return;
+                }
             }
 
             Transactions<LuckyDrawBox> transBox = new Transactions<LuckyDrawBox>(DataCon);
