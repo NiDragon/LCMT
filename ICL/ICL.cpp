@@ -89,8 +89,6 @@ int BrowseFolder(wchar_t* title, wchar_t* result_path, wchar_t* saved_path)
 
 				if (SUCCEEDED(hr)) 
 				{
-					std::wstring sp = pwsz;
-
 					memset(result_path, 0, MAX_PATH);
 
 					wcscpy_s(result_path, MAX_PATH, pwsz);
