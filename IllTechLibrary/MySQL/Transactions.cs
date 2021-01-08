@@ -234,35 +234,36 @@ namespace IllTechLibrary
         /// <param name="type">Type of query to execute</param>
         public void ExecuteQuery(Deserialize<T> classData, QUERY_TYPE type)
         {
-            String query = "";
+            StringBuilder sb = new StringBuilder();
+
+            string where = ""; 
+            
+            if(classData.key != string.Empty || classData.WhereValue != string.Empty)
+                where = classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue;
 
             switch (type)
             {
                 case QUERY_TYPE.UPDATE:
                     if (classData.GetConditions() == String.Empty)
                     {
-                        query += String.Format("UPDATE `{0}` SET %data WHERE %key=%value;", classData.table)
-                            .Replace("%key", classData.key)
-                            .Replace("%value", classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue);
+                        sb.Append($"UPDATE `{classData.table}` SET %data WHERE {classData.key}={where};");
                     }
                     else
                     {
-                        query += String.Format($"UPDATE `{classData.table}` SET %data {classData.GetConditions()}");
+                        sb.Append($"UPDATE `{classData.table}` SET %data {classData.GetConditions()}");
                     }
                     break;
                 case QUERY_TYPE.INSERT:
-                    query += String.Format("INSERT INTO `{0}` (%data0) VALUES (%data1);", classData.table);
+                    sb.Append($"INSERT INTO `{classData.table}` (%data0) VALUES (%data1);");
                     break;
                 case QUERY_TYPE.DELETE:
                     if (classData.GetConditions() == String.Empty)
                     {
-                        query += String.Format("DELETE FROM `{0}` WHERE %key=%value;", classData.table)
-                        .Replace("%key", classData.key)
-                        .Replace("%value", classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue);
+                        sb.Append($"DELETE FROM `{classData.table}` WHERE {classData.key}={where};");
                     }
                     else
                     {
-                        query += String.Format($"DELETE FROM `{classData.table}` {classData.GetConditions()}");
+                        sb.Append($"DELETE FROM `{classData.table}` {classData.GetConditions()}");
                     }
                     break;
                 default:
@@ -299,15 +300,15 @@ namespace IllTechLibrary
 
             if (type == QUERY_TYPE.INSERT)
             {
-                query = query.Replace("%data0", values2).Replace("%data1", values);
+                sb = sb.Replace("%data0", values2).Replace("%data1", values);
             }
             else
             {
-                query = query.Replace("%data", values);
+                sb = sb.Replace("%data", values);
             }
 #if DEBUG
             TextWriter tw = new StreamWriter(File.Open("Testing.txt", FileMode.Create));
-            tw.Write(query);
+            tw.Write(sb.ToString());
             tw.Flush();
             tw.Close();
             tw.Dispose();
@@ -319,10 +320,11 @@ namespace IllTechLibrary
                     if (!ctx.IsValid())
                         return;
 
-                    query = query.Replace(@"\", "\\\\").Replace("/", "\\\\");
-                    using (MySqlCommand command = new MySqlCommand(query, ctx))
+                    sb = sb.Replace(@"\", "\\\\").Replace("/", "\\\\");
+                    using (MySqlCommand command = new MySqlCommand(sb.ToString(), ctx))
                     {
                         command.CommandTimeout = 2147483;
+                        command.Prepare();
                         command.ExecuteNonQuery();
                     }
                 }
@@ -356,18 +358,20 @@ namespace IllTechLibrary
                 String values = "";
                 String values2 = "";
 
+                // Guessing String.Format was used to make it easier to read in this case
+                // Cannot remember wrote it so long ago
                 for (int j = 0; j < classData.memberCount; j++)
                 {
                     switch (type)
                     {
                         case QUERY_TYPE.UPDATE:
-                            values += String.Format("{0}='{1}'", classData.GetName(j), Prepare(classData[j].ToString().Replace(@"'", @"''"), false));
+                            values += $"{classData.GetName(j)}='{Prepare(classData[j].ToString().Replace(@"'", @"''"), false)}'";
                             if (j + 1 != classData.memberCount)
                                 values += ",";
                             break;
                         case QUERY_TYPE.INSERT:
-                            values += String.Format("'{0}'", Prepare(classData[j].ToString().Replace(@"'", @"''"), false));
-                            values2 += String.Format("{0}", classData.GetName(j));
+                            values += $"'{Prepare(classData[j].ToString().Replace(@"'", @"''"), false)}'";
+                            values2 += $"{classData.GetName(j)}";
                             if (i + 1 != classData.memberCount)
                             {
                                 values += ",";
@@ -451,6 +455,7 @@ namespace IllTechLibrary
                                         using (MySqlCommand command = new MySqlCommand(queue[i], ctx))
                                         {
                                             command.CommandTimeout = 2147483;
+                                            command.Prepare();
                                             command.ExecuteNonQuery();
                                         }
                                     }
@@ -509,6 +514,7 @@ namespace IllTechLibrary
                                     using (MySqlCommand command = new MySqlCommand(QList.ToString(), ctx))
                                     {
                                         command.CommandTimeout = 2147483;
+                                        command.Prepare();
                                         command.ExecuteNonQuery();
                                     }
                                 }
@@ -562,24 +568,24 @@ namespace IllTechLibrary
         private String StartQuery(QUERY_TYPE type, Deserialize<T> classData)
         {
             String ret = "";
+            String where = "";
+            
+            if(classData.key != string.Empty || classData.WhereValue != string.Empty)
+                where = classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue;
 
             switch (type)
             {
                 case QUERY_TYPE.UPDATE:
-                    ret += String.Format("UPDATE `{0}` SET %data WHERE %key=%value;", classData.table)
-                        .Replace("%key", classData.key)
-                        .Replace("%value", classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue); ;
+                    ret += $"UPDATE `{classData.table}` SET %data WHERE {classData.key}={where};";
                     break;
                 case QUERY_TYPE.INSERT:
-                    ret += String.Format("INSERT INTO `{0}` (%data0) VALUES (%data1);", classData.table);
+                    ret += $"INSERT INTO `{classData.table}` (%data0) VALUES (%data1);";
                     break;
                 case QUERY_TYPE.DELETE:
-                    ret += String.Format("DELETE FROM `{0}` WHERE %key=%value;", classData.table)
-                        .Replace("%key", classData.key)
-                        .Replace("%value", classData.WhereValue == String.Empty ? classData[classData.key].ToString() : classData.WhereValue);
+                    ret += $"DELETE FROM `{classData.table}` WHERE {classData.key}={where};";
                     break;
                 default:
-                    break;
+                    throw new NotImplementedException("Unknown Query Type!");
             }
 
             return ret;
@@ -643,7 +649,6 @@ namespace IllTechLibrary
                 {
                     command.CommandTimeout = 2147483;
                     command.Prepare();
-
                     command.ExecuteNonQuery();
                 }
 #endif

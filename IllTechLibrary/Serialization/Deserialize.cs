@@ -160,7 +160,7 @@ namespace IllTechLibrary.Serialization
             this.WhereValue = Convert.ToString(p);
         }
 
-        // What we order the enrty by
+        // What we order the entry by
         public void SetKey(String key) { this.key = key; }
         public String GetKey() { return key; }
 

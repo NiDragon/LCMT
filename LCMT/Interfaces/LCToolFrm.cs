@@ -124,23 +124,28 @@ namespace LCMT
         /// <param name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
         {
-            // Block input to the window
-            Enabled = false;
-
-            // cancel all pending tasks
-            CancelTasks();
-
-            // wait for tasks to respond
-            while (HasPendingTasks() == EPendingTaskState.Active)
+            // if our token is null we already did this code in OnDisconnect
+            if (taskToken != null)
             {
-                Application.DoEvents();
+                // Block input to the window
+                Enabled = false;
+
+                // cancel all pending tasks
+                CancelTasks();
+
+                // wait for tasks to respond
+                while (HasPendingTasks() == EPendingTaskState.Active)
+                {
+                    Application.DoEvents();
+                }
+
+                taskToken.Dispose();
+                taskToken = null;
             }
 
-            if (m_toolID != string.Empty)
-            {
-                OnDisconnect();
+            // This is a valid tool window
+            if(m_toolID != string.Empty)
                 Preferences.WriteWindow(m_toolID, this);
-            }
 
             // Call the inherited forms OnFormClosing callback
             // This should call last due to most clean up being in disconnect
@@ -170,22 +175,27 @@ namespace LCMT
         /// </summary>
         public virtual void OnDisconnect()
         {
-            // Block input to the window
-            Enabled = false;
-
-            // cancel all pending tasks
-            CancelTasks();
-
-            // wait for tasks to respond
-            while (HasPendingTasks() == EPendingTaskState.Active)
+            // Prevent an odd condition where the window might close first 
+            // Then try to disconnect on another thread (require lock to make thread safe?)
+            if (taskToken != null)
             {
-                Application.DoEvents();
+                // Block input to the window
+                Enabled = false;
+
+                // cancel all pending tasks
+                CancelTasks();
+
+                // wait for tasks to respond
+                while (HasPendingTasks() == EPendingTaskState.Active)
+                {
+                    Application.DoEvents();
+                }
+
+                taskToken.Dispose();
+                taskToken = null;
+
+                Enabled = true;
             }
-
-            taskToken.Dispose();
-            taskToken = null;
-
-            Enabled = true;
         }
 
         protected override void WndProc(ref Message m)
@@ -372,6 +382,9 @@ namespace LCMT
         /// <returns></returns>
         private bool IsPendingCancel()
         {
+            if (taskToken == null)
+                return false;
+
             return taskToken.IsCancellationRequested;
         }
 
@@ -380,7 +393,7 @@ namespace LCMT
         /// </summary>
         private void CancelTasks()
         {
-            taskToken.Cancel();
+            taskToken?.Cancel();
         }
         
         /// <summary>
