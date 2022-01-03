@@ -21,7 +21,7 @@ namespace LCMT
 #endif
         }
 
-        internal static void ThreadAcceptionHandler(object sender, ThreadExceptionEventArgs e)
+        internal static void ThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
         {
             MsgDialogs.LogError($"{e.Exception.Message}\n{e.Exception.StackTrace}");
 
@@ -66,7 +66,7 @@ namespace LCMT
                 AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
                 AppDomain.CurrentDomain.FirstChanceException += FirstChanceHandler;
 
-                Application.ThreadException += ThreadAcceptionHandler;
+                Application.ThreadException += ThreadExceptionHandler;
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             }
 
